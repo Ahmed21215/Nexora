@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexora Students — Templates for getting in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAFAF7;
+    --paper-alt: #F2F1EA;
+    --ink: #16213D;
+    --ink-soft: #5B6472;
+    --line: #DEDFD8;
+    --white: #FFFFFF;
+    --accent: #2F6F62;
+    --accent-soft: #E7EFEC;
+    --amber: #C97F1E;
+    --amber-soft: #FBF0DE;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  .mono { font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.02em; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 32px; }
+
+  header.site {
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+
+  .crumbs {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .crumbs a { color: var(--ink-soft); text-decoration: none; }
+  .crumbs a:hover { color: var(--ink); }
+  .crumbs .sep { color: #C7C8C0; }
+  .crumbs .here { color: var(--accent); font-weight: 500; }
+
+  nav.tabs { display: flex; gap: 4px; }
+  nav.tabs a {
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    padding: 8px 14px;
+    border-radius: 5px 5px 0 0;
+    transition: color 0.15s, background 0.15s;
+  }
+  nav.tabs a:hover { color: var(--ink); background: var(--paper-alt); }
+
+  .nav-cta {
+    font-size: 13.5px;
+    font-weight: 600;
+    background: var(--ink);
+    color: var(--white) !important;
+    padding: 9px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  section.hero { padding: 56px 0 64px; }
+
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+
+  h1 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 42px;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    margin-bottom: 20px;
+  }
+
+  .hero p.lede { font-size: 16.5px; color: var(--ink-soft); max-width: 460px; margin-bottom: 28px; }
+
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .btn-primary, .btn-secondary {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 13px 22px;
+    border-radius: 6px;
+    transition: transform 0.12s, box-shadow 0.12s;
+  }
+
+  .btn-primary { background: var(--accent); color: var(--white); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(47,111,98,0.28); }
+
+  .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .btn-secondary:hover { border-color: var(--ink); }
+
+  .tracker-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    box-shadow: 0 20px 50px -25px rgba(22,33,61,0.25);
+    overflow: hidden;
+  }
+
+  .tracker-head {
+    display: flex; align-items: center; gap: 8px;
+    padding: 12px 16px; border-bottom: 1px solid var(--line);
+    background: var(--paper-alt);
+  }
+
+  .tracker-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
+  .tracker-title { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--ink-soft); }
+
+  table.tracker { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  table.tracker th {
+    font-family: 'IBM Plex Mono', monospace; text-align: left; font-weight: 500;
+    color: var(--ink-soft); font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 10px 16px 8px; border-bottom: 1px solid var(--line);
+  }
+  table.tracker td { padding: 11px 16px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  table.tracker tr:last-child td { border-bottom: none; }
+
+  .pill {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500;
+    padding: 3px 9px; border-radius: 20px; display: inline-block;
+  }
+  .pill.emailed { background: var(--amber-soft); color: var(--amber); }
+  .pill.interview { background: var(--accent-soft); color: var(--accent); }
+  .pill.waiting { background: #EEEEE9; color: var(--ink-soft); }
+  .pill.offer { background: var(--accent); color: var(--white); }
+
+  section.why { padding: 56px 0; border-top: 1px solid var(--line); }
+  .why-inner { max-width: 640px; }
+  .why-inner .eyebrow { color: var(--ink-soft); }
+  .why-inner p { font-family: 'Source Serif 4', serif; font-size: 19px; line-height: 1.55; }
+  .why-inner p + p { margin-top: 16px; }
+
+  section.product { padding: 64px 0; border-top: 1px solid var(--line); }
+  .product-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 32px; flex-wrap: wrap; }
+  .product-head h2 { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 30px; letter-spacing: -0.01em; margin-bottom: 6px; }
+  .product-head .sub { color: var(--ink-soft); font-size: 14.5px; max-width: 480px; }
+  .price-tag { font-family: 'IBM Plex Mono', monospace; font-size: 26px; font-weight: 500; color: var(--accent); white-space: nowrap; }
+  .price-tag .per { font-size: 12px; color: var(--ink-soft); display: block; font-weight: 400; margin-top: 2px; }
+
+  .item-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: var(--line); border: 1px solid var(--line); border-radius: 8px;
+    overflow: hidden; margin-bottom: 28px;
+  }
+  .item { background: var(--white); padding: 16px 18px; display: flex; gap: 12px; align-items: flex-start; font-size: 14px; }
+  .item .num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent); margin-top: 2px; flex-shrink: 0; }
+
+  section.formats { padding: 48px 0; border-top: 1px solid var(--line); background: var(--paper-alt); }
+  .formats h3 { font-family: 'Source Serif 4', serif; font-size: 20px; margin-bottom: 6px; }
+  .formats .sub { color: var(--ink-soft); font-size: 14px; margin-bottom: 22px; max-width: 520px; }
+  .format-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .format-tag { font-family: 'IBM Plex Mono', monospace; font-size: 12px; background: var(--white); border: 1px solid var(--line); padding: 8px 14px; border-radius: 6px; }
+
+  section.faq { padding: 64px 0; border-top: 1px solid var(--line); }
+  section.faq h2 { font-family: 'Source Serif 4', serif; font-size: 26px; margin-bottom: 28px; }
+  .faq-item { border-bottom: 1px solid var(--line); padding: 20px 0; }
+  .faq-item h4 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+  .faq-item p { color: var(--ink-soft); font-size: 14px; max-width: 620px; }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  footer .wordmark { font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 16px; }
+  footer .fine { font-size: 12.5px; color: var(--ink-soft); }
+
+  @media (max-width: 760px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    nav.tabs { display: none; }
+    h1 { font-size: 30px; }
+    .item-grid { grid-template-columns: 1fr; }
+    .product-head { align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav-inner">
+    <div class="crumbs">
+      <a href="index.html">Nexora Solutions</a>
+      <span class="sep">/</span>
+      <span class="here">Students</span>
+    </div>
+    <nav class="tabs">
+      <a href="#research">Research Bundle</a>
+      <a href="#healthcare">Healthcare Bundle</a>
+      <a href="#formats">What you get</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="nav-cta" href="#research">Get the templates</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Nexora Students</span>
+      <h1>Send the right email. Track it. Get the offer.</h1>
+      <p class="lede">Editable resume, outreach, and tracking templates for students applying into research labs and healthcare careers — built from the outreach that actually worked, not a generic guide.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#research">Research Outreach Kit — $29</a>
+        <a class="btn-secondary" href="#healthcare">Healthcare Bundle — $49</a>
+      </div>
+    </div>
+    <div class="tracker-card">
+      <div class="tracker-head">
+        <div class="tracker-dot"></div>
+        <div class="tracker-title">weekly-application-tracker.xlsx</div>
+      </div>
+      <table class="tracker">
+        <thead><tr><th>Lab / Program</th><th>Status</th><th>Next step</th></tr></thead>
+        <tbody>
+          <tr><td>Chen Lab — Immunology</td><td><span class="pill emailed">Emailed</span></td><td>Follow up Fri</td></tr>
+          <tr><td>Riverside Health — Shadowing</td><td><span class="pill interview">Interview</span></td><td>Prep Thu 2pm</td></tr>
+          <tr><td>Okafor Lab — Genomics</td><td><span class="pill waiting">Waiting</span></td><td>Wait 1 week</td></tr>
+          <tr><td>St. Mary's — Volunteer</td><td><span class="pill offer">Offer</span></td><td>Reply by Mon</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap why-inner">
+    <span class="eyebrow">Why this exists</span>
+    <p>I sent a lot of cold emails before I understood what actually got a reply — to professors, to grad students, to program coordinators. Most of it was trial and error, and most of the guidance I could find online was too vague to act on.</p>
+    <p>These templates are the versions that worked, cleaned up and made editable, along with the trackers I wish I'd had from day one so nothing fell through the cracks.</p>
+  </div>
+</section>
+
+<section class="product" id="research">
+  <div class="wrap">
+    <div class="product-head">
+      <div>
+        <h2>Research Outreach Starter Kit</h2>
+        <p class="sub">Everything to go from "I don't know where to start" to a full pipeline of professor and grad-student outreach.</p>
+      </div>
+      <div class="price-tag">$29<span class="per">introductory price</span></div>
+    </div>
+    <div class="item-grid">
+      <div class="item"><span class="num">01</span>Research resume template</div>
+      <div class="item"><span class="num">02</span>Cover letter template</div>
+      <div class="item"><span class="num">03</span>Professor cold-email templates</div>
+      <div class="item"><span class="num">04</span>Graduate-student outreach templates</div>
+      <div class="item"><span class="num">05</span>Follow-up email templates</div>
+      <div class="item"><span class="num">06</span>Research-interest worksheet</div>
+      <div class="item"><span class="num">07</span>Laboratory comparison tracker</div>
+      <div class="item"><span class="num">08</span>Interview question bank</div>
+      <div class="item"><span class="num">09</span>Interview preparation worksheet</div>
+      <div class="item"><span class="num">10</span>Weekly application tracker</div>
+      <div class="item"><span class="num">11</span>One-year research commitment planner</div>
+      <div class="item"><span class="num">12</span>"What to include in your first email" guide</div>
+    </div>
+    <a class="btn-primary" href="#">Get the Research Kit — $29</a>
+  </div>
+</section>
+
+<section class="product" id="healthcare">
+  <div class="wrap">
+    <div class="product-head">
+      <div>
+        <h2>Healthcare Career Starter Bundle</h2>
+        <p class="sub">Resume, interview, and tracking tools built for clinical experience, shadowing, and healthcare program applications.</p>
+      </div>
+      <div class="price-tag">$49<span class="per">introductory price</span></div>
+    </div>
+    <div class="item-grid">
+      <div class="item"><span class="num">01</span>General healthcare resume template</div>
+      <div class="item"><span class="num">02</span>Clinical experience resume template</div>
+      <div class="item"><span class="num">03</span>Leadership resume template</div>
+      <div class="item"><span class="num">04</span>Cover-letter framework</div>
+      <div class="item"><span class="num">05</span>Interview answer workbook</div>
+      <div class="item"><span class="num">06</span>Experience-hours tracker</div>
+      <div class="item"><span class="num">07</span>Recommendation-letter tracker</div>
+      <div class="item"><span class="num">08</span>Professional email templates</div>
+      <div class="item"><span class="num">09</span>LinkedIn profile checklist</div>
+      <div class="item"><span class="num">10</span>Volunteer and certification tracker</div>
+      <div class="item"><span class="num">11</span>Application deadline dashboard</div>
+    </div>
+    <a class="btn-primary" href="#">Get the Healthcare Bundle — $49</a>
+  </div>
+</section>
+
+<section class="formats" id="formats">
+  <div class="wrap">
+    <h3>Built to edit, not just to read</h3>
+    <p class="sub">Every bundle comes as working files you can customize right away — never just one giant PDF.</p>
+    <div class="format-row">
+      <div class="format-tag">Google Docs</div>
+      <div class="format-tag">Microsoft Word</div>
+      <div class="format-tag">PDF instructions</div>
+      <div class="format-tag">Google Sheets / Excel trackers</div>
+      <div class="format-tag">"Start Here" PDF</div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <h2>Questions</h2>
+    <div class="faq-item">
+      <h4>Can I actually edit these, or is it a locked PDF?</h4>
+      <p>Everything comes as an editable Google Doc or Word file, plus a Sheets/Excel version of every tracker. PDFs are only used for the short instruction guides.</p>
+    </div>
+    <div class="faq-item">
+      <h4>How do I get the files after buying?</h4>
+      <p>You'll get an instant download link by email after checkout, along with the "Start Here" guide so you know what to open first.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Do the templates work outside the US?</h4>
+      <p>The outreach structure and tracking system apply broadly, though a few program-specific references assume a US application cycle.</p>
+    </div>
+    <div class="faq-item">
+      <h4>What if it's not useful to me?</h4>
+      <p>Email support within 14 days of purchase and you'll get a full refund, no questions asked.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="wordmark">Nexora Students</div>
+    <div class="fine">A division of Nexora Solutions · © 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>

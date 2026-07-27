@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexora Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAFAF7;
+    --paper-alt: #F2F1EA;
+    --ink: #16213D;
+    --ink-soft: #5B6472;
+    --line: #DEDFD8;
+    --white: #FFFFFF;
+
+    --students: #2F6F62;
+    --students-soft: #E7EFEC;
+    --business: #3B4C8C;
+    --business-soft: #E8EBF6;
+    --academy: #C97F1E;
+    --academy-soft: #FBF0DE;
+    --labs: #6E4B8C;
+    --labs-soft: #EFE7F5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  .mono { font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.02em; }
+
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 32px; }
+
+  header.site {
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+
+  .wordmark {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .wordmark .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  nav.tabs { display: flex; gap: 4px; }
+
+  nav.tabs a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 12px;
+  }
+
+  nav.tabs a.live { color: var(--ink-soft); }
+  nav.tabs a.live:hover { color: var(--ink); }
+  nav.tabs a.soon { color: #B7B9B0; cursor: default; pointer-events: none; }
+
+  /* HERO */
+  section.hero { padding: 84px 0 60px; }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    display: inline-block;
+  }
+
+  h1 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 46px;
+    line-height: 1.14;
+    letter-spacing: -0.015em;
+    max-width: 680px;
+    margin-bottom: 20px;
+  }
+
+  section.hero p.lede {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 500px;
+  }
+
+  /* DIRECTORY — signature element */
+  section.directory { padding: 20px 0 72px; }
+
+  .directory-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .directory-head h2 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  .directory-head .count {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .division {
+    display: grid;
+    grid-template-columns: 90px 1fr auto 130px;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 20px;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.15s;
+  }
+
+  a.division { text-decoration: none; color: inherit; }
+  a.division:hover { background: var(--white); }
+
+  .division .code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .division .code.students { color: var(--students); }
+  .division .code.business { color: var(--business); }
+  .division .code.academy { color: var(--academy); }
+  .division .code.labs { color: var(--labs); }
+
+  .division .name {
+    font-family: 'Source Serif 4', serif;
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .division .desc {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+
+  .status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .status::before {
+    content: '';
+    width: 6px; height: 6px; border-radius: 50%;
+  }
+
+  .status.active { background: var(--students-soft); color: var(--students); }
+  .status.active::before { background: var(--students); }
+
+  .status.building { background: var(--paper-alt); color: var(--ink-soft); }
+  .status.building::before { background: #B7B9B0; }
+
+  .division .arrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-align: right;
+  }
+
+  /* ROADMAP */
+  section.roadmap {
+    padding: 64px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .roadmap-head {
+    margin-bottom: 32px;
+  }
+
+  .roadmap-head h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 26px;
+    margin-bottom: 8px;
+  }
+
+  .roadmap-head p {
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    max-width: 520px;
+  }
+
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .roadmap-card {
+    background: var(--white);
+    padding: 24px 22px;
+  }
+
+  .roadmap-card .top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .roadmap-card .code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .roadmap-card.business .code { color: var(--business); }
+  .roadmap-card.academy .code { color: var(--academy); }
+  .roadmap-card.labs .code { color: var(--labs); }
+
+  .roadmap-card h4 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .roadmap-card ul {
+    list-style: none;
+  }
+
+  .roadmap-card li {
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding: 8px 0;
+    border-top: 1px solid var(--paper-alt);
+    display: flex;
+    gap: 9px;
+  }
+
+  .roadmap-card li:first-of-type { border-top: none; padding-top: 0; }
+
+  .roadmap-card li::before {
+    content: '';
+    width: 5px; height: 5px; border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  .roadmap-card.business li::before { background: var(--business); }
+  .roadmap-card.academy li::before { background: var(--academy); }
+  .roadmap-card.labs li::before { background: var(--labs); }
+
+  /* ABOUT STRIP */
+  section.about {
+    padding: 56px 0;
+    border-top: 1px solid var(--line);
+    background: var(--paper-alt);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+
+  .about-grid h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .about-grid p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+
+  footer { padding: 40px 0; }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer .fine { font-size: 12.5px; color: var(--ink-soft); }
+
+  @media (max-width: 760px) {
+    nav.tabs { display: none; }
+    h1 { font-size: 32px; }
+    .division { grid-template-columns: 60px 1fr; row-gap: 8px; }
+    .division .status, .division .arrow { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .roadmap-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav-inner">
+    <div class="wordmark">Nexora <span class="tag">Solutions</span></div>
+    <nav class="tabs">
+      <a class="live" href="students.html">Students</a>
+      <a class="soon" href="#">Business</a>
+      <a class="soon" href="#">Academy</a>
+      <a class="soon" href="#">Labs</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Nexora Solutions</span>
+    <h1>One company, four divisions, each solving a different problem well.</h1>
+    <p class="lede">Nexora builds practical tools and services across student careers, business operations, education, and software — starting with what's ready today.</p>
+  </div>
+</section>
+
+<section class="directory">
+  <div class="wrap">
+    <div class="directory-head">
+      <h2>Divisions</h2>
+      <span class="count">4 total — 1 active</span>
+    </div>
+
+    <a class="division" href="students.html">
+      <span class="code students">N01</span>
+      <div>
+        <div class="name">Nexora Students</div>
+        <div class="desc">Study guides and career kits — resume, outreach, and application-tracking templates.</div>
+      </div>
+      <span class="status active">Active</span>
+      <span class="arrow">Explore →</span>
+    </a>
+
+    <div class="division">
+      <span class="code business">N02</span>
+      <div>
+        <div class="name">Nexora Business</div>
+        <div class="desc">AI audits, SOPs, and automation for small and mid-size teams.</div>
+      </div>
+      <span class="status building">In development</span>
+      <span class="arrow"></span>
+    </div>
+
+    <div class="division">
+      <span class="code academy">N03</span>
+      <div>
+        <div class="name">Nexora Academy</div>
+        <div class="desc">Courses built from the same methods used across the other divisions.</div>
+      </div>
+      <span class="status building">In development</span>
+      <span class="arrow"></span>
+    </div>
+
+    <div class="division">
+      <span class="code labs">N04</span>
+      <div>
+        <div class="name">Nexora Labs</div>
+        <div class="desc">Software and AI tools — the next step after templates and SOPs.</div>
+      </div>
+      <span class="status building">In development</span>
+      <span class="arrow"></span>
+    </div>
+  </div>
+</section>
+
+<section class="roadmap">
+  <div class="wrap">
+    <div class="roadmap-head">
+      <h2>What's planned</h2>
+      <p>Students is open today. Here's the direction for the other three divisions as they come online.</p>
+    </div>
+    <div class="roadmap-grid">
+      <div class="roadmap-card business">
+        <div class="top"><span class="code">N02</span></div>
+        <h4>Nexora Business</h4>
+        <ul>
+          <li>AI readiness audit for small teams</li>
+          <li>Documented SOPs for repeatable workflows</li>
+          <li>Automation setup for manual, repetitive tasks</li>
+          <li>Ongoing support retainer option</li>
+        </ul>
+      </div>
+      <div class="roadmap-card academy">
+        <div class="top"><span class="code">N03</span></div>
+        <h4>Nexora Academy</h4>
+        <ul>
+          <li>Cohort course on research &amp; career outreach</li>
+          <li>Self-paced course on SOPs and automation basics</li>
+          <li>Certificate on completion of each track</li>
+        </ul>
+      </div>
+      <div class="roadmap-card labs">
+        <div class="top"><span class="code">N04</span></div>
+        <h4>Nexora Labs</h4>
+        <ul>
+          <li>Application tracker as a live web app</li>
+          <li>AI assistant for drafting outreach emails</li>
+          <li>Internal tools released for public use</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap about-grid">
+    <div>
+      <h3>Why divisions, not just products</h3>
+      <p>Each Nexora division serves a different audience with a different problem — a student trying to break into research, a business owner drowning in manual work. Keeping them separate means each one stays focused instead of becoming a generic catch-all.</p>
+    </div>
+    <div>
+      <h3>What's live right now</h3>
+      <p>Nexora Students is the only division open today, offering editable templates and trackers built from real outreach experience. Business, Academy, and Labs are in active development — check back as they launch.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="wordmark">Nexora <span class="tag">Solutions</span></div>
+    <div class="fine">© 2026 Nexora Solutions.</div>
+  </div>
+</footer>
+
+</body>
+</html>
