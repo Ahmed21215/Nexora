@@ -23,6 +23,8 @@
     --academy-soft: #FBF0DE;
     --labs: #6E4B8C;
     --labs-soft: #EFE7F5;
+    --tutor: #1F7A8C;
+    --tutor-soft: #E3F0F2;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -169,6 +171,7 @@
   .division .code.business { color: var(--business); }
   .division .code.academy { color: var(--academy); }
   .division .code.labs { color: var(--labs); }
+  .division .code.tutor { color: var(--tutor); }
 
   .division .name {
     font-family: 'Source Serif 4', serif;
@@ -236,7 +239,7 @@
 
   .roadmap-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1px;
     background: var(--line);
     border: 1px solid var(--line);
@@ -265,6 +268,7 @@
   .roadmap-card.business .code { color: var(--business); }
   .roadmap-card.academy .code { color: var(--academy); }
   .roadmap-card.labs .code { color: var(--labs); }
+  .roadmap-card.tutor .code { color: var(--tutor); }
 
   .roadmap-card h4 {
     font-family: 'Source Serif 4', serif;
@@ -298,6 +302,7 @@
   .roadmap-card.business li::before { background: var(--business); }
   .roadmap-card.academy li::before { background: var(--academy); }
   .roadmap-card.labs li::before { background: var(--labs); }
+  .roadmap-card.tutor li::before { background: var(--tutor); }
 
   /* ABOUT STRIP */
   section.about {
@@ -336,6 +341,10 @@
 
   footer .fine { font-size: 12.5px; color: var(--ink-soft); }
 
+  @media (max-width: 900px) and (min-width: 761px) {
+    .roadmap-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
   @media (max-width: 760px) {
     nav.tabs { display: none; }
     h1 { font-size: 32px; }
@@ -353,8 +362,9 @@
     <div class="wordmark">Nexora <span class="tag">Solutions</span></div>
     <nav class="tabs">
       <a class="live" href="students.html">Students</a>
-      <a class="soon" href="#">Business</a>
       <a class="soon" href="#">Academy</a>
+      <a class="soon" href="#">Tutor</a>
+      <a class="soon" href="#">Business</a>
       <a class="soon" href="#">Labs</a>
     </nav>
   </div>
@@ -363,8 +373,8 @@
 <section class="hero">
   <div class="wrap">
     <span class="eyebrow">Nexora Solutions</span>
-    <h1>One company, four divisions, each solving a different problem well.</h1>
-    <p class="lede">Nexora builds practical tools and services across student careers, business operations, education, and software — starting with what's ready today.</p>
+    <h1>One company, five divisions, each solving a different problem well.</h1>
+    <p class="lede">Nexora builds practical tools and services across student careers, tutoring, business operations, education, and software — starting with what's ready today.</p>
   </div>
 </section>
 
@@ -372,7 +382,7 @@
   <div class="wrap">
     <div class="directory-head">
       <h2>Divisions</h2>
-      <span class="count">4 total — 1 active</span>
+      <span class="count">5 total — 1 active</span>
     </div>
 
     <a class="division" href="students.html">
@@ -386,17 +396,7 @@
     </a>
 
     <div class="division">
-      <span class="code business">N02</span>
-      <div>
-        <div class="name">Nexora Business</div>
-        <div class="desc">AI audits, SOPs, and automation for small and mid-size teams.</div>
-      </div>
-      <span class="status building">In development</span>
-      <span class="arrow"></span>
-    </div>
-
-    <div class="division">
-      <span class="code academy">N03</span>
+      <span class="code academy">N02</span>
       <div>
         <div class="name">Nexora Academy</div>
         <div class="desc">Courses built from the same methods used across the other divisions.</div>
@@ -406,7 +406,27 @@
     </div>
 
     <div class="division">
-      <span class="code labs">N04</span>
+      <span class="code tutor">N03</span>
+      <div>
+        <div class="name">Nexora Tutor</div>
+        <div class="desc">Video lessons by subject for undergraduate pre-med coursework.</div>
+      </div>
+      <span class="status building">In development</span>
+      <span class="arrow"></span>
+    </div>
+
+    <div class="division">
+      <span class="code business">N04</span>
+      <div>
+        <div class="name">Nexora Business</div>
+        <div class="desc">AI audits, SOPs, and automation for small and mid-size teams.</div>
+      </div>
+      <span class="status building">In development</span>
+      <span class="arrow"></span>
+    </div>
+
+    <div class="division">
+      <span class="code labs">N05</span>
       <div>
         <div class="name">Nexora Labs</div>
         <div class="desc">Software and AI tools — the next step after templates and SOPs.</div>
@@ -421,11 +441,30 @@
   <div class="wrap">
     <div class="roadmap-head">
       <h2>What's planned</h2>
-      <p>Students is open today. Here's the direction for the other three divisions as they come online.</p>
+      <p>Students is open today. Here's the direction for the other four divisions as they come online.</p>
     </div>
     <div class="roadmap-grid">
-      <div class="roadmap-card business">
+      <div class="roadmap-card academy">
         <div class="top"><span class="code">N02</span></div>
+        <h4>Nexora Academy</h4>
+        <ul>
+          <li>Cohort course on research &amp; career outreach</li>
+          <li>Self-paced course on SOPs and automation basics</li>
+          <li>Certificate on completion of each track</li>
+        </ul>
+      </div>
+      <div class="roadmap-card tutor">
+        <div class="top"><span class="code">N03</span></div>
+        <h4>Nexora Tutor</h4>
+        <ul>
+          <li>Video lessons by subject (bio, chem, physics, etc.)</li>
+          <li>Organized by pre-med undergraduate course</li>
+          <li>Short concept reviews alongside full lectures</li>
+          <li>Practice questions tied to each topic</li>
+        </ul>
+      </div>
+      <div class="roadmap-card business">
+        <div class="top"><span class="code">N04</span></div>
         <h4>Nexora Business</h4>
         <ul>
           <li>AI readiness audit for small teams</li>
@@ -434,17 +473,8 @@
           <li>Ongoing support retainer option</li>
         </ul>
       </div>
-      <div class="roadmap-card academy">
-        <div class="top"><span class="code">N03</span></div>
-        <h4>Nexora Academy</h4>
-        <ul>
-          <li>Cohort course on research &amp; career outreach</li>
-          <li>Self-paced course on SOPs and automation basics</li>
-          <li>Certificate on completion of each track</li>
-        </ul>
-      </div>
       <div class="roadmap-card labs">
-        <div class="top"><span class="code">N04</span></div>
+        <div class="top"><span class="code">N05</span></div>
         <h4>Nexora Labs</h4>
         <ul>
           <li>Application tracker as a live web app</li>
@@ -464,7 +494,7 @@
     </div>
     <div>
       <h3>What's live right now</h3>
-      <p>Nexora Students is the only division open today, offering editable templates and trackers built from real outreach experience. Business, Academy, and Labs are in active development — check back as they launch.</p>
+      <p>Nexora Students is the only division open today, offering editable templates and trackers built from real outreach experience. Academy, Tutor, Business, and Labs are in active development — check back as they launch.</p>
     </div>
   </div>
 </section>
